@@ -18,6 +18,7 @@ Public Class Principale
         tmrNote.Interval = (60 / nupInterval.Value) * 1000
         tmrDecompte.Interval = tmrNote.Interval
         My.Settings.iDelai = nupInterval.Value
+
     End Sub
     Private m_sapi As Object
     Private Sub LoadSoundReader()
