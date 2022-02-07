@@ -11,8 +11,12 @@
         MyBase.New(_ctnr)
     End Sub
     Public Property Max As Integer = 4
+    Protected Sub ReadActual()
+        RaiseEvent ReadValue(m_actual)
+    End Sub
     Public Overloads Sub Start()
-        m_actual = 0
+        m_actual = 1
+        ReadActual()
         MyBase.Start()
 
     End Sub
@@ -20,7 +24,7 @@
     Private Sub TimerDecompte_Tick(sender As Object, e As EventArgs) Handles Me.Tick
         m_actual += 1
         If m_actual <= Max Then
-            RaiseEvent ReadValue(m_actual)
+            ReadActual()
         Else
             MyBase.Stop()
             RaiseEvent Completed()

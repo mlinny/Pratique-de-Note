@@ -24,6 +24,7 @@ Partial Class Principale
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.gpbParamteres = New System.Windows.Forms.GroupBox()
+        Me.gpbTraining = New System.Windows.Forms.GroupBox()
         Me.gpbParamNote = New System.Windows.Forms.GroupBox()
         Me.lblMax = New System.Windows.Forms.Label()
         Me.chkBemol = New System.Windows.Forms.CheckBox()
@@ -45,12 +46,14 @@ Partial Class Principale
         Me.btnFont = New System.Windows.Forms.Button()
         Me.splitDebug = New System.Windows.Forms.SplitContainer()
         Me.splitParamNote = New System.Windows.Forms.SplitContainer()
+        Me.MyNup1 = New Pratique_de_Note.MyNup()
         Me.nupRepetitionNote = New Pratique_de_Note.MyNup()
         Me.nupNbNote = New Pratique_de_Note.MyNup()
         Me.nupVolume = New Pratique_de_Note.MyNup()
         Me.nupInterval = New Pratique_de_Note.MyNup()
         Me.tmrDecompte = New Pratique_de_Note.TimerDecompte(Me.components)
         Me.gpbParamteres.SuspendLayout()
+        Me.gpbTraining.SuspendLayout()
         Me.gpbParamNote.SuspendLayout()
         Me.gpbVoix.SuspendLayout()
         Me.gpbDélai.SuspendLayout()
@@ -63,6 +66,7 @@ Partial Class Principale
         Me.splitParamNote.Panel1.SuspendLayout()
         Me.splitParamNote.Panel2.SuspendLayout()
         Me.splitParamNote.SuspendLayout()
+        CType(Me.MyNup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nupRepetitionNote, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nupNbNote, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nupVolume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,6 +76,7 @@ Partial Class Principale
         'gpbParamteres
         '
         Me.gpbParamteres.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.gpbParamteres.Controls.Add(Me.gpbTraining)
         Me.gpbParamteres.Controls.Add(Me.gpbParamNote)
         Me.gpbParamteres.Controls.Add(Me.gpbVoix)
         Me.gpbParamteres.Controls.Add(Me.gpbDélai)
@@ -81,10 +86,21 @@ Partial Class Principale
         Me.gpbParamteres.Location = New System.Drawing.Point(0, 0)
         Me.gpbParamteres.Margin = New System.Windows.Forms.Padding(15)
         Me.gpbParamteres.Name = "gpbParamteres"
-        Me.gpbParamteres.Size = New System.Drawing.Size(602, 530)
+        Me.gpbParamteres.Size = New System.Drawing.Size(717, 530)
         Me.gpbParamteres.TabIndex = 0
         Me.gpbParamteres.TabStop = False
         Me.gpbParamteres.Text = "Paramètres"
+        '
+        'gpbTraining
+        '
+        Me.gpbTraining.Controls.Add(Me.MyNup1)
+        Me.gpbTraining.Location = New System.Drawing.Point(276, 48)
+        Me.gpbTraining.Name = "gpbTraining"
+        Me.gpbTraining.Size = New System.Drawing.Size(242, 110)
+        Me.gpbTraining.TabIndex = 5
+        Me.gpbTraining.TabStop = False
+        Me.gpbTraining.Text = "Entrainement"
+        Me.gpbTraining.Visible = False
         '
         'gpbParamNote
         '
@@ -211,9 +227,9 @@ Partial Class Principale
         'btnDebug
         '
         Me.btnDebug.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDebug.Location = New System.Drawing.Point(390, 109)
+        Me.btnDebug.Location = New System.Drawing.Point(556, 109)
         Me.btnDebug.Name = "btnDebug"
-        Me.btnDebug.Size = New System.Drawing.Size(195, 49)
+        Me.btnDebug.Size = New System.Drawing.Size(144, 49)
         Me.btnDebug.TabIndex = 4
         Me.btnDebug.Text = "Debug"
         Me.btnDebug.UseVisualStyleBackColor = True
@@ -221,12 +237,12 @@ Partial Class Principale
         'btnStart
         '
         Me.btnStart.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnStart.Location = New System.Drawing.Point(334, 36)
+        Me.btnStart.Location = New System.Drawing.Point(556, 36)
         Me.btnStart.Margin = New System.Windows.Forms.Padding(10, 9, 10, 9)
         Me.btnStart.Name = "btnStart"
-        Me.btnStart.Size = New System.Drawing.Size(251, 61)
+        Me.btnStart.Size = New System.Drawing.Size(144, 61)
         Me.btnStart.TabIndex = 3
-        Me.btnStart.Text = "C'est parti"
+        Me.btnStart.Text = "START"
         Me.btnStart.UseVisualStyleBackColor = True
         '
         'gpbAfficheNote
@@ -238,7 +254,7 @@ Partial Class Principale
         Me.gpbAfficheNote.Margin = New System.Windows.Forms.Padding(10, 9, 10, 9)
         Me.gpbAfficheNote.Name = "gpbAfficheNote"
         Me.gpbAfficheNote.Padding = New System.Windows.Forms.Padding(20)
-        Me.gpbAfficheNote.Size = New System.Drawing.Size(602, 189)
+        Me.gpbAfficheNote.Size = New System.Drawing.Size(717, 189)
         Me.gpbAfficheNote.TabIndex = 1
         Me.gpbAfficheNote.TabStop = False
         Me.gpbAfficheNote.Text = "Note"
@@ -254,7 +270,7 @@ Partial Class Principale
         Me.lblNote.Location = New System.Drawing.Point(20, 60)
         Me.lblNote.Margin = New System.Windows.Forms.Padding(15)
         Me.lblNote.Name = "lblNote"
-        Me.lblNote.Size = New System.Drawing.Size(562, 109)
+        Me.lblNote.Size = New System.Drawing.Size(677, 109)
         Me.lblNote.TabIndex = 0
         Me.lblNote.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -272,13 +288,13 @@ Partial Class Principale
         Me.txtTotal.Margin = New System.Windows.Forms.Padding(10, 9, 10, 9)
         Me.txtTotal.Multiline = True
         Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(262, 605)
+        Me.txtTotal.Size = New System.Drawing.Size(317, 605)
         Me.txtTotal.TabIndex = 2
         '
         'btnFont
         '
         Me.btnFont.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnFont.Location = New System.Drawing.Point(22, 12)
+        Me.btnFont.Location = New System.Drawing.Point(77, 12)
         Me.btnFont.Margin = New System.Windows.Forms.Padding(10, 9, 10, 9)
         Me.btnFont.Name = "btnFont"
         Me.btnFont.Size = New System.Drawing.Size(250, 69)
@@ -301,8 +317,8 @@ Partial Class Principale
         Me.splitDebug.Panel2.Controls.Add(Me.btnFont)
         Me.splitDebug.Panel2.Controls.Add(Me.txtTotal)
         Me.splitDebug.Panel2MinSize = 0
-        Me.splitDebug.Size = New System.Drawing.Size(888, 723)
-        Me.splitDebug.SplitterDistance = 602
+        Me.splitDebug.Size = New System.Drawing.Size(1058, 723)
+        Me.splitDebug.SplitterDistance = 717
         Me.splitDebug.TabIndex = 3
         '
         'splitParamNote
@@ -321,9 +337,23 @@ Partial Class Principale
         'splitParamNote.Panel2
         '
         Me.splitParamNote.Panel2.Controls.Add(Me.gpbAfficheNote)
-        Me.splitParamNote.Size = New System.Drawing.Size(602, 723)
+        Me.splitParamNote.Size = New System.Drawing.Size(717, 723)
         Me.splitParamNote.SplitterDistance = 530
         Me.splitParamNote.TabIndex = 0
+        '
+        'MyNup1
+        '
+        Me.MyNup1.BackColor = System.Drawing.Color.Black
+        Me.MyNup1.ForeColor = System.Drawing.Color.LawnGreen
+        Me.MyNup1.Location = New System.Drawing.Point(13, 52)
+        Me.MyNup1.Margin = New System.Windows.Forms.Padding(10, 9, 10, 9)
+        Me.MyNup1.Maximum = New Decimal(New Integer() {180, 0, 0, 0})
+        Me.MyNup1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.MyNup1.Name = "MyNup1"
+        Me.MyNup1.Size = New System.Drawing.Size(216, 47)
+        Me.MyNup1.TabIndex = 0
+        Me.MyNup1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.MyNup1.Value = New Decimal(New Integer() {60, 0, 0, 0})
         '
         'nupRepetitionNote
         '
@@ -385,13 +415,14 @@ Partial Class Principale
         Me.AutoScaleDimensions = New System.Drawing.SizeF(20.0!, 39.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(888, 723)
+        Me.ClientSize = New System.Drawing.Size(1058, 723)
         Me.Controls.Add(Me.splitDebug)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(10, 9, 10, 9)
         Me.Name = "Principale"
         Me.Text = "Générateur de note de musique"
         Me.gpbParamteres.ResumeLayout(False)
+        Me.gpbTraining.ResumeLayout(False)
         Me.gpbParamNote.ResumeLayout(False)
         Me.gpbParamNote.PerformLayout()
         Me.gpbVoix.ResumeLayout(False)
@@ -407,6 +438,7 @@ Partial Class Principale
         Me.splitParamNote.Panel2.ResumeLayout(False)
         CType(Me.splitParamNote, System.ComponentModel.ISupportInitialize).EndInit()
         Me.splitParamNote.ResumeLayout(False)
+        CType(Me.MyNup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nupRepetitionNote, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nupNbNote, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nupVolume, System.ComponentModel.ISupportInitialize).EndInit()
@@ -442,4 +474,6 @@ Partial Class Principale
     Friend WithEvents nupRepetitionNote As MyNup
     Friend WithEvents lblMax As Label
     Friend WithEvents tmrDecompte As TimerDecompte
+    Friend WithEvents gpbTraining As GroupBox
+    Friend WithEvents MyNup1 As MyNup
 End Class

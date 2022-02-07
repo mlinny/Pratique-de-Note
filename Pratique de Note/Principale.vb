@@ -57,6 +57,7 @@ Public Class Principale
 
 #End Region
     Private Sub ReadNote(_note As String)
+        'Un using n'est pas possible, ca provoque des décalages dans la lecture
         Dim t As New Task(Sub() m_sapi.Speak(_note))
         t.Start()
     End Sub
